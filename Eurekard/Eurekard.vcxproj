@@ -121,7 +121,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\ExternalLibs\SDL2_image-2.0.5\lib\x64;$(SolutionDir)\ExternalLibs\SDL2-2.0.16\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\ExternalLibs\SDL2_image-2.0.5\lib\x64;..\ExternalLibs\SDL2-2.0.16\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2Main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -142,11 +142,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Eurekard.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Platform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Platform.h" />
   </ItemGroup>
