@@ -1,4 +1,5 @@
 #include "Platform.h"
+#include <iostream>
 
 Platform* Platform::ptr = nullptr;
 
@@ -33,8 +34,25 @@ void Platform::InitWindow()
 
 void Platform::Input()
 {
-
-
+	SDL_Event e;
+	while (SDL_PollEvent(&e))
+	{
+		if (e.type == SDL_MOUSEBUTTONDOWN)
+		{
+			std::cout << "mouse ";
+		}
+		else if (e.type == SDL_MOUSEMOTION)
+		{
+			std::cout << "x: " << e.motion.x << std::endl;
+			std::cout << "y: " << e.motion.y << std::endl;
+		}
+		else if(e.type == SDL_KEYDOWN){
+			if (e.key.keysym.sym == SDLK_ESCAPE)
+			{
+				std::cout << "SDLK_ESCAPE ";
+			}
+		}
+	}
 }
 
 void Platform::Draw(const Image& img)

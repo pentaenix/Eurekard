@@ -30,6 +30,9 @@ void draw()
 int input()
 {
 
+	auto platform = Platform::GetPtr();
+	platform->Input();
+
 
 	return 0;
 }
