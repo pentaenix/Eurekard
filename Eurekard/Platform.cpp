@@ -31,8 +31,14 @@ void Platform::InitWindow()
 	}
 
 }
+void Platform::GetMouseInfo(int& m_mouseX, int& m_mouseY, int& m_mouseState)
+{
+	m_mouseX = mouseX;
+	m_mouseY = mouseY;
+	m_mouseState = mouseState;
+}
 
-void Platform::Input(int &mouseX,int &mouseY, int &mouseState)
+void Platform::Input()
 {
 	SDL_Event e;
 	while (SDL_PollEvent(&e))
@@ -41,6 +47,11 @@ void Platform::Input(int &mouseX,int &mouseY, int &mouseState)
 		{
 			std::cout << "mouse ";
 			mouseState = 1;
+		}
+		if (e.type == SDL_MOUSEBUTTONUP)
+		{
+			std::cout << "mouse ";
+			mouseState = 0;
 		}
 		if (e.type == SDL_MOUSEMOTION)
 		{

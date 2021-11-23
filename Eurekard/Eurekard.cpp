@@ -27,12 +27,13 @@ void draw()
 	testButton->Draw();
 	platform->RenderWindow();
 }
-int m_mouseX = 0, m_mouseY = 0, m_mouseState = 0;
+
 int input()
 {
-	
+	int m_mouseX, m_mouseY, m_mouseState;
 	auto platform = Platform::GetPtr();
-	platform->Input(m_mouseX,m_mouseY,m_mouseState);
+	platform->Input();
+	platform->GetMouseInfo(m_mouseX, m_mouseY, m_mouseState);
 	testButton->Update(m_mouseX, m_mouseY, m_mouseState);
 
 	return 0;

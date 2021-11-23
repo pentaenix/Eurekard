@@ -30,7 +30,7 @@ Button::Button(std::string imgName, int x, int y)
     height = imgInactive.GetWidth();
 
     posX = x;
-    posX = y;
+    posY = y;
 }
 
 void Button::SetEvents(Event* _highlighted, Event* _pressed, Event* _inactive)
