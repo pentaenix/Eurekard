@@ -26,7 +26,7 @@ public:
     Button(std::string imgName, int x, int y);
     void SetEvents(Event* highlighted, Event* pressed, Event* inactive);
     void Draw();
-    void Update(int mouseX, int mouseY, int mouseState);
+    void Update();
 /*
 Atributos
 evento
