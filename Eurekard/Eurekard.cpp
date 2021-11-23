@@ -30,11 +30,9 @@ void draw()
 
 int input()
 {
-	int m_mouseX, m_mouseY, m_mouseState;
 	auto platform = Platform::GetPtr();
 	platform->Input();
-	platform->GetMouseInfo(m_mouseX, m_mouseY, m_mouseState);
-	testButton->Update(m_mouseX, m_mouseY, m_mouseState);
+	testButton->Update();
 
 	return 0;
 }
