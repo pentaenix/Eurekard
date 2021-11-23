@@ -18,7 +18,7 @@ public:
     int GetPosX();
     int GetPosY();
     void SetPosX(int m_posX);
-    void SetPosy(int m_posY);
+    void SetPosY(int m_posY);
     std::string GetSource();
     
 };

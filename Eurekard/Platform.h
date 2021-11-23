@@ -15,7 +15,7 @@ public:
     ~Platform();
     static Platform* GetPtr();
 	void InitWindow();
-	void Input();
+	void Input(int& mouseX, int& mouseY, int& mouseState);
 	void Draw(const Image& img);
     void ClearWindow();
     void RenderWindow();

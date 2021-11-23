@@ -32,7 +32,7 @@ void Platform::InitWindow()
 
 }
 
-void Platform::Input()
+void Platform::Input(int &mouseX,int &mouseY, int &mouseState)
 {
 	SDL_Event e;
 	while (SDL_PollEvent(&e))
@@ -40,13 +40,16 @@ void Platform::Input()
 		if (e.type == SDL_MOUSEBUTTONDOWN)
 		{
 			std::cout << "mouse ";
+			mouseState = 1;
 		}
-		else if (e.type == SDL_MOUSEMOTION)
+		if (e.type == SDL_MOUSEMOTION)
 		{
 			std::cout << "x: " << e.motion.x << std::endl;
+			mouseX = e.motion.x;
 			std::cout << "y: " << e.motion.y << std::endl;
+			mouseY = e.motion.y;
 		}
-		else if(e.type == SDL_KEYDOWN){
+		if(e.type == SDL_KEYDOWN){
 			if (e.key.keysym.sym == SDLK_ESCAPE)
 			{
 				std::cout << "SDLK_ESCAPE ";

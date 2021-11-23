@@ -45,7 +45,7 @@ void Image::SetPosX(int m_posX)
 {
     posX=m_posX;
 }
-void Image::SetPosy(int m_posY)
+void Image::SetPosY(int m_posY)
 {
     posY=m_posY;
 }
