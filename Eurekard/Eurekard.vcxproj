@@ -143,6 +143,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardManager.cpp" />
     <ClCompile Include="Eurekard.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -150,9 +152,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Card.h" />
+    <ClInclude Include="CardManager.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Platform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MagoOscuro.card" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,5 @@
+defense  = 2100
+attack = 2500
+type = Monster
+pathImageUp = "MagoOscuro.png"
+
