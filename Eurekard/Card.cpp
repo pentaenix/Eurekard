@@ -2,11 +2,11 @@
 #include <sstream>
 #include <fstream>
 
-void Card::Load(std::string data, std::string pathCardDown, std::string pathCardUp)
+void Card::Load(std::string pathFileData)
 {
-    faceDown = new Button(pathCardDown, posX, posY);
-    faceUp = new Button(pathCardUp, posX, posY);
-    ReadFile(data);
+    ReadFile(pathFileData);
+    faceDown = new Button("Resources/CardDown", posX, posY);
+    faceUp = new Button(pathImage + "CardUp", posX, posY);
 }
 
 void Card::ReadFile(std::string path)
@@ -17,32 +17,54 @@ void Card::ReadFile(std::string path)
     while(std::getline(inFile,line))
     {
         std::stringstream ss(line);
-        std::getline(ss,entry,' ');
-        if(entry == "defense"){
-            std::getline(ss, value, ' ');
-            std::getline(ss, value, '\n');
-            int tmp_int = stoi(value);
-            SetDefense(tmp_int);
+        std::getline(ss, entry, ' ');
+        if(entry == "defense")
+        {
+           SetDefense(GetValue(ss, entry, value));
         }
-        else if(entry == "attack"){
-            std::getline(ss, value, ' ');
-            std::getline(ss, value, '\n');
-            int tmp_int = stoi(value);
-            SetAttack(tmp_int);
+        else if(entry == "attack")
+        {
+            SetAttack(GetValue(ss, entry, value));
         }
-        else if(entry == "type"){
-            std::getline(ss, value, ' ');
-            std::getline(ss, value, '\n');
-            int tmp_int = stoi(value);
-            type = (CardType)tmp_int;
+        else if(entry == "type")
+        {
+            GetString(ss, entry, value);
+            if (value =="Monster")
+            {
+                type = CardType::Monster;
+            }
+            else if (value == "SpecialMonster")
+            {
+                type = CardType::SpecialMonster;
+            }
+            else if (value == "Effect")
+            {
+                type = CardType::Effect;
+            }
         }
-        else if(entry == "pathImageUp"){
-            std::getline(ss, value, ' ');
-            std::getline(ss, value, '\n');
-            //path=value;
+        else if(entry == "pathImageUp")
+        {
+            GetString(ss, entry, value);
+            pathImage = value;
         }
     }
     inFile.close();
+}
+
+int Card::GetValue(std::stringstream& ss, std::string& entry, std::string& value)
+{
+    std::getline(ss, entry, ' ');
+    std::getline(ss, value, '=');
+    std::getline(ss, value, '\n');
+    return stoi(value);
+}
+
+std::string Card::GetString(std::stringstream & ss, std::string & entry, std::string & value)
+{
+    std::getline(ss, entry, ' ');
+    std::getline(ss, value, '=');
+    std::getline(ss, value, '\n');
+    return value;
 }
 
 int Card::GetDefense()

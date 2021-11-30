@@ -6,6 +6,10 @@ void Image::LoadImage(const std::string& path)
 {
     source=path;
     SDL_Surface* loadedImg = IMG_Load(path.c_str());
+    if (loadedImg == nullptr)
+    {
+        throw "Fail LoadImage";
+    }
     width = loadedImg->w;
     height = loadedImg->h;
     image = SDL_CreateTextureFromSurface(Platform::GetPtr()->GetRender(), loadedImg);

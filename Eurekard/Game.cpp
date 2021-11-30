@@ -1,12 +1,14 @@
 #include "Game.h"
 #include "Platform.h"
+
 #define ESC '\x1B'
 
 int Game::Init()
 {
 	auto platform = Platform::GetPtr();
 	platform->InitWindow();
-	testButton = new Button("button", 100, 100);
+	card = new Card();
+	card->Load("MagoOscuro.card");
 	return 0;
 }
 
@@ -20,7 +22,7 @@ void Game::Draw()
 	auto platform = Platform::GetPtr();
 	platform->ClearWindow();
 	//Render
-	testButton->Draw();
+	card->Draw();
 	platform->RenderWindow();
 }
 
@@ -28,7 +30,7 @@ int Game::Input()
 {
 	auto platform = Platform::GetPtr();
 	auto key = platform->Input();
-	testButton->Update();
+	card->Update();
 	return key;
 }
 

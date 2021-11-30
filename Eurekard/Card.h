@@ -21,13 +21,16 @@ private:
 	int attack;
 	int posX;
 	int posY;
+	std::string pathImage;
 	CardType type;
 	CardState state;
 	Button* faceUp;
 	Button* faceDown;
-	void ReadFile(std::string path);
+	void ReadFile(std::string pathFile);
+	int GetValue(std::stringstream& ss, std::string& entry, std::string& value);
+	std::string GetString(std::stringstream& ss, std::string& entry, std::string& value);
 public:
-	void Load(std::string data, std::string pathCardDown, std::string pathCardUp);
+	void Load(std::string pathFileData);
 
 	int GetDefense();
 	int GetAttack();
