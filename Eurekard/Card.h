@@ -1,5 +1,6 @@
 #pragma once
 #include "Button.h"
+
 enum CardType{
 	Monster,
 	SpecialMonster,
@@ -24,7 +25,7 @@ private:
 	CardState state;
 	Button* faceUp;
 	Button* faceDown;
-	void ReadFile(std::string path;
+	void ReadFile(std::string path);
 public:
 	void Load(std::string data, std::string pathCardDown, std::string pathCardUp);
 

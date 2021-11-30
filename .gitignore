@@ -32,3 +32,6 @@
 *.app
 .vs
 x64
+/Eurekard/Debug/vc142.pdb
+/Eurekard/Debug/vc142.idb
+/Eurekard/Debug

@@ -6,6 +6,7 @@ void Card::Load(std::string data, std::string pathCardDown, std::string pathCard
 {
     faceDown = new Button(pathCardDown, posX, posY);
     faceUp = new Button(pathCardUp, posX, posY);
+    ReadFile(data);
 }
 
 void Card::ReadFile(std::string path)
@@ -13,8 +14,6 @@ void Card::ReadFile(std::string path)
     std::ifstream inFile(path);
     std::string line;
     std::string entry, value;
-
-   
     while(std::getline(inFile,line))
     {
         std::stringstream ss(line);

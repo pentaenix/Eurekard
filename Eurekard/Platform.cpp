@@ -38,7 +38,7 @@ void Platform::GetMouseInfo(int& m_mouseX, int& m_mouseY, int& m_mouseState)
 	m_mouseState = mouseState;
 }
 
-void Platform::Input()
+int Platform::Input()
 {
 	SDL_Event e;
 	while (SDL_PollEvent(&e))
@@ -60,15 +60,18 @@ void Platform::Input()
 			std::cout << "y: " << e.motion.y << std::endl;
 			mouseY = e.motion.y;
 		}
-		if(e.type == SDL_KEYDOWN){
-			if (e.key.keysym.sym == SDLK_ESCAPE)
-			{
-				std::cout << "SDLK_ESCAPE ";
-			}
+		if(e.type == SDL_KEYDOWN)
+		{
+			return e.key.keysym.sym;
 		}
 	}
 }
-
+/*
+if (e.key.keysym.sym == SDLK_ESCAPE)
+			{
+				return std::cout << "SDLK_ESCAPE ";
+			}
+*/
 void Platform::Draw(const Image& img)
 {
 

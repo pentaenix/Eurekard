@@ -4,11 +4,16 @@
 
 void Button::Draw()
 {
-    if(ButtonState::inactive == state){
+    if(ButtonState::inactive == state)
+    {
         imgInactive.Draw();
-    }else if(ButtonState::highlighted == state){
+    }
+    else if(ButtonState::highlighted == state)
+    {
         imgHighlighted.Draw();
-    }else{
+    }
+    else
+    {
         imgPressed.Draw();
     }
 }
