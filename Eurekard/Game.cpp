@@ -1,14 +1,22 @@
 #include "Game.h"
 #include "Platform.h"
-
+#include "stdlib.h"
+#include "time.h"
 #define ESC '\x1B'
+
+Game::Game()
+{
+	
+}
 
 int Game::Init()
 {
+	srand(time(NULL));
 	auto platform = Platform::GetPtr();
 	platform->InitWindow();
-	card = new Card();
-	card->Load("MagoOscuro.card");
+	auto cardManager = CardManager::GetPtr();
+	cardManager->Load("Resources/cards.list");
+	p1 = new Player();
 	return 0;
 }
 
@@ -21,8 +29,7 @@ void Game::Draw()
 {
 	auto platform = Platform::GetPtr();
 	platform->ClearWindow();
-	//Render
-	card->Draw();
+	p1->Draw();
 	platform->RenderWindow();
 }
 
@@ -30,7 +37,6 @@ int Game::Input()
 {
 	auto platform = Platform::GetPtr();
 	auto key = platform->Input();
-	card->Update();
 	return key;
 }
 

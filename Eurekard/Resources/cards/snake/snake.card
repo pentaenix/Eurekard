@@ -1,0 +1,5 @@
+defense  = 2
+attack = 5
+mana = 2
+type = Effect
+pathImageUp = Resources/cards/snake/snake

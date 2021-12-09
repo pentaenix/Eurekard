@@ -1,17 +1,20 @@
 #pragma once
 #include "Button.h"
-#include "Card.h"
+#include "cardManager.h"
+#include "Player.h"
 
 class Game
 {
 private:
-	Card* card;
+	Player *p1;
+	
 	int escape = 0;
 	int Init();
 	void Update();
 	void Draw();
 	int Input();
 public:
+	Game();
 	void GameLoop();
 };
 

@@ -145,20 +145,30 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardManager.cpp" />
+    <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Eurekard.cpp" />
     <ClCompile Include="Event.cpp" />
+    <ClCompile Include="Field.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Graveyard.cpp" />
+    <ClCompile Include="Hand.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardManager.h" />
+    <ClInclude Include="Deck.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="Field.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Graveyard.h" />
+    <ClInclude Include="Hand.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Platform.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MagoOscuro.card" />

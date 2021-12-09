@@ -1,0 +1,5 @@
+defense  = 3
+attack = 3
+mana = 3
+type = Effect
+pathImageUp = Resources/cards/Aeranas/Aeranas

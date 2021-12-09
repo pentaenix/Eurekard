@@ -51,6 +51,27 @@ bool Button::MouseBox(int m_x,int m_y)
     return m_x >= posX && m_x <= posX + width && m_y >= posY && m_y <= posY + height;
 }
 
+ButtonState Button::GetState()
+{
+    return state;
+}
+
+void Button::SetPosX(int _x)
+{
+    posX = _x;
+    imgInactive.SetPosX(posX);
+    imgHighlighted.SetPosX(posX);
+    imgPressed.SetPosX(posX);
+}
+
+void Button::SetPosY(int _y)
+{
+    posY = _y;
+    imgInactive.SetPosY(posY);
+    imgHighlighted.SetPosY(posY);
+    imgPressed.SetPosY(posY);
+}
+
 void Button::Update()
 {
     int mouseX=0, mouseY=0, mouseState=0;

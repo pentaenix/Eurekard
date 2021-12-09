@@ -27,6 +27,9 @@ public:
     void SetEvents(Event* highlighted, Event* pressed, Event* inactive);
     void Draw();
     void Update();
+    ButtonState GetState();
+    void SetPosX(int _x);
+    void SetPosY(int _y);
 /*
 Atributos
 evento

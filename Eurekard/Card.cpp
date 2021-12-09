@@ -1,17 +1,18 @@
 #include "Card.h"
 #include <sstream>
 #include <fstream>
+#include "Hand.h"
 
 void Card::Load(std::string pathFileData)
 {
     ReadFile(pathFileData);
-    faceDown = new Button("Resources/CardDown", posX, posY);
     faceUp = new Button(pathImage + "CardUp", posX, posY);
 }
 
 void Card::ReadFile(std::string path)
 {
     std::ifstream inFile(path);
+    //Mateo agregar validacion si el archivo no exite
     std::string line;
     std::string entry, value;
     while(std::getline(inFile,line))
@@ -25,6 +26,10 @@ void Card::ReadFile(std::string path)
         else if(entry == "attack")
         {
             SetAttack(GetValue(ss, entry, value));
+        }
+        else if (entry == "mana")
+        {
+            SetMana(GetValue(ss, entry, value));
         }
         else if(entry == "type")
         {
@@ -87,6 +92,26 @@ void Card::SetAttack(const int& atk)
     attack = atk;
 }
 
+int Card::GetMana()
+{
+    return mana;
+}
+
+void Card::SetMana(const int& _mana)
+{
+    mana = _mana;
+}
+
+void Card::SetButton(Button* _faceUp)
+{
+    faceUp = _faceUp;
+}
+
+Button* Card::GetButton()
+{
+   return faceUp;
+}
+
 int Card::GetPosX()
 {
     return posX;
@@ -97,14 +122,25 @@ int Card::GetPosY()
     return posY;
 }
 
+CardState Card::GetState()
+{
+    return state;
+}
+void Card::SetState(CardState _state)
+{
+    state = _state;
+}
+
 void Card::SetPosX(const int& px)
 {
     posX = px;
+    faceUp->SetPosX(posX);
 }
 
 void Card::SetPosY(const int& py)
 {
     posY = py;
+    faceUp->SetPosY(posY);
 }
 
 void Card::Draw()
@@ -118,12 +154,13 @@ void Card::Draw()
              state == CardState::OnHand ||
              state == CardState::OnDeck)
     {
-        faceDown->Draw();    
+        faceUp->Draw();
     }
 }
 
 void Card::Update()
 {
+
     if (state == CardState::OnFieldUp)
     {
         faceUp->Update();    
@@ -133,6 +170,19 @@ void Card::Update()
              state == CardState::OnHand ||
              state == CardState::OnDeck)
     {
-        faceDown->Update();    
+        faceUp->Update();
     }  
+
+
+    if (faceUp->GetState() == ButtonState::pressed)
+    {
+        (handObj->*UseCard)(this);
+    }
+}
+
+
+void Card::SetHandCallBack(Hand* _handObj, void (Hand::* _UseCard)(Card* card))
+{
+    handObj = _handObj;
+    UseCard = _UseCard;
 }
